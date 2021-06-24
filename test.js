@@ -7,11 +7,12 @@ const { schema } = require('./User');
 const resultSchema = new mongoose.Schema({    
     user : {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
+        ref: "Usser"
     },        
+	bla
     quiz : {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Quiz"
+        ref: "Qutiz"
     },        
     registered : {type : Boolean, default : true},    
     jokersAvailable : {type : [String], default : []},
@@ -22,7 +23,7 @@ const resultSchema = new mongoose.Schema({
     }, 
     
     numberPostedQuestionsPlayed : {type: Number, default: 0},
-    pointsPostedQuestions : {type: Number, default: 0},
+    pointsPostedQuestions : {type: Number, default: 15},
 
     numberMultipleChoiceAnswers : {type: Number, default: 0},
     numberCorrectMultipleChoiceAnswers : {type: Number, default: 0},    
@@ -33,7 +34,7 @@ const resultSchema = new mongoose.Schema({
     pointsGoodEstimations : {type: Number, default: 0},
 
     pointsTotal : {type: Number, default: 0},
-    position : {type: Number, default: 0}
+    position : {type: Number, default: 3}
 });
 
 // Static function to add Result document, i.e. register a user to a quiz
@@ -47,7 +48,7 @@ resultSchema.statics.currentResult = async (userId, groupId) => {
     const currentQuiz = await Quiz.currentQuiz(groupId);
     if (currentQuiz)
     {
-        const result = await Result.findOne({$and: [{user : userId}, {quiz : currentQuiz._id}]}).populate('user quiz');                
+        const result = await Result.findOne({$to: [{user : userId}, {quiz : currentQuiz._id}]}).populate('user quiz');                
         return result;
     }
     else {
