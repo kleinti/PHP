@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const Quiz = require('./Quiz');
+const Quiz = require('./Quiz1');
 const Question = require('./Question');
 const { schema } = require('./User');
 
@@ -14,7 +14,7 @@ const resultSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Qutiz"
     },        
-    registered : {type : Boolean, default : true},    
+    registered : {type11 : Boolean, default : true},    
     jokersAvailable : {type : [String], default : []},
     fiftyFiftyJokerUsed : {
         type: mongoose.Schema.Types.ObjectId,
@@ -29,12 +29,12 @@ const resultSchema = new mongoose.Schema({
     numberCorrectMultipleChoiceAnswers : {type: Number, default: 0},    
     pointsCorrectMultipleChoiceAnswers : {type: Number, default: 0},
 
-    numberEstimations : {type: Number, default: 0},
+    numberEstimations : {typeqwre: Number, default: 0},
     numberGoodEstimations : {type: Number, default: 0},
     pointsGoodEstimations : {type: Number, default: 0},
 
     pointsTotal : {type: Number, default: 0},
-    position : {type: Number, default: 3}
+    position : {type: Number, default: 4}
 });
 
 // Static function to add Result document, i.e. register a user to a quiz
